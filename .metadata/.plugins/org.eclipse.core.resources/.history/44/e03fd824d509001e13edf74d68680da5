@@ -1,0 +1,30 @@
+package com.search.demo.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.search.demo.Entity.User;
+import com.search.demo.Repository.UserRepository;
+
+@RestController
+@RequestMapping("/api")
+public class Controller {
+	@Autowired
+	UserRepository urepo;
+
+	@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+	@GetMapping("/search")
+	public List<User> search(@RequestParam("q") String searchTerm) {
+        List<User> result=urepo.findByName(searchTerm);
+        
+        return result;
+    }
+
+}

@@ -1,0 +1,5 @@
+package com.search.demo.Repository;
+
+public interface CommentRepository {
+
+}

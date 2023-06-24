@@ -1,0 +1,21 @@
+package com.search.demo.comment;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.Data;
+@Data
+@Entity
+
+public class Comment {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long taskid;
+	private String description;
+	@Column(name="event_id")
+	private int event_id;
+
+}
